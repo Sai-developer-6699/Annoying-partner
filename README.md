@@ -2,6 +2,8 @@
 
 # Ego-Bot 3000: The Annoying AI Companion 👾🎯
 
+![Ego-Bot 3000 Project Cover](images/cover.png)
+
 A borderless, unclosable, always-on-top desktop pet that demands unique compliments every 15 seconds, snoops on your active windows, and punishes slacking off with either a high-stakes persuasion duel against a local AI Judge or compulsory mouse-freeze detention.
 
 ---
