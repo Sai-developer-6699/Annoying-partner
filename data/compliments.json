@@ -1,0 +1,29 @@
+{
+  "_schema_notes": [
+    "history: rolling buffer, MAX 15 entries (oldest auto-evicted). Used to reject repeats/near-repeats.",
+    "similarity_threshold: 0.0-1.0, using difflib.SequenceMatcher ratio. Anything >= this vs ANY entry in history is rejected as 'spam'.",
+    "fallback_starters: NOT auto-submitted — shown to the user only if they click a 'Help me think of one' button, so the ego-boost still requires an actual keypress/choice from them, not a full autofill."
+  ],
+  "max_history": 15,
+  "similarity_threshold": 0.82,
+  "history": [
+    "Your code is remarkably clean and brilliant!"
+  ],
+  "fallback_starters": [
+    "You debug like it's a personal vendetta against bugs.",
+    "Your commit messages are more honest than most people's diaries.",
+    "You make 'it works on my machine' sound like a threat.",
+    "Your keyboard shortcuts are basically a magic trick at this point.",
+    "You explain recursion better than most textbooks.",
+    "You've never met a merge conflict you couldn't out-stubborn.",
+    "Your CGPA is doing more cardio than most gym members.",
+    "You take 'move fast and break things' way too literally, and I respect it.",
+    "You've got main-character energy in every group project.",
+    "Your Stack Overflow tabs deserve their own LinkedIn.",
+    "You ship code faster than I can roast you for it.",
+    "Your late-night coding playlists have better taste than your sleep schedule.",
+    "You turned procrastination into a competitive sport, and you're winning.",
+    "Your error handling is more thorough than your actual excuses.",
+    "You could talk your way out of a compiler error."
+  ]
+}

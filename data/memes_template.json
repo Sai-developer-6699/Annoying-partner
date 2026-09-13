@@ -1,0 +1,569 @@
+{
+  "_schema_notes": [
+    "Each object in 'scenarios' is ONE trigger condition.",
+    "Each scenario has exactly 2 'options' (mild / savage) so the Selector LLM or a coin-flip can pick a flavor.",
+    "audio_file, caption, and myinstants_url are left as null/placeholder — the scraper (scrape_myinstants.py) fills these in by searching 'search_query' on Myinstants and writing the downloaded filename + the page's own caption text back into this file.",
+    "NEVER hardcode copyrighted dialogue text yourself in this file — always let the scraper pull the real clip title/caption from the source page at run time. This keeps you scraping-for-personal-use rather than redistributing typed-out dialogue.",
+    "avatar_expression maps to a sprite/frame name your Tkinter avatar class understands (e.g. sprites/angry.png)."
+  ],
+  "trigger_types": [
+    "unauthorized_app",
+    "timer_expired",
+    "failed_begging",
+    "spam_typing",
+    "persuasion_fail",
+    "persuasion_pass"
+  ],
+  "scenarios": [
+    {
+      "id": "chrome_youtube_01",
+      "trigger": "unauthorized_app",
+      "app_hint": "chrome",
+      "search_query": "mohanlal angry reaction",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/jagathy_comedy.mp3",
+          "caption": "Oru YouTube und alle, deadline evide?",
+          "avatar_expression": "smirk",
+          "meme_id": "jagathy_comedy"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Ninte reel scroll continue aanu, alle?",
+          "avatar_expression": "furious",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "chrome_social_02",
+      "trigger": "unauthorized_app",
+      "app_hint": "chrome",
+      "search_query": "salim kumar confused dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/jagathy_comedy.mp3",
+          "caption": "Game open aayi, ente ego close aayi.",
+          "avatar_expression": "confused",
+          "meme_id": "jagathy_comedy"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Ithu ente time alle, entha ee cheating?",
+          "avatar_expression": "disappointed",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "steam_game_03",
+      "trigger": "unauthorized_app",
+      "app_hint": "steam",
+      "search_query": "jagathy sreekumar comedy scolding",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/salim_kumar.mp3",
+          "caption": "Chat window nokkiyalle irikkunne, code evide?",
+          "avatar_expression": "shocked",
+          "meme_id": "salim_kumar"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Scroll scroll scroll, work evide?",
+          "avatar_expression": "furious",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "netflix_04",
+      "trigger": "unauthorized_app",
+      "app_hint": "netflix",
+      "search_query": "suraj venjaramoodu sarcastic dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/jagathy_comedy.mp3",
+          "caption": "Ende sneham venda, notification venda alle?",
+          "avatar_expression": "smug",
+          "meme_id": "jagathy_comedy"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Ninak enne kaal social media ishtam alle.",
+          "avatar_expression": "furious",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "instagram_05",
+      "trigger": "unauthorized_app",
+      "app_hint": "instagram",
+      "search_query": "innocent dialogue reels meme",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/jagathy_comedy.mp3",
+          "caption": "Ithu kണ്ടിട്ട് enik sahikkunilla, close cheyy!",
+          "avatar_expression": "eye_roll",
+          "meme_id": "jagathy_comedy"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Last warning, close aavuka allenkil...",
+          "avatar_expression": "disgusted",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "generic_game_06",
+      "trigger": "unauthorized_app",
+      "app_hint": "any_game_process",
+      "search_query": "lalu alex scolding scene",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/salim_kumar.mp3",
+          "caption": "Oru YouTube und alle, deadline evide?",
+          "avatar_expression": "unimpressed",
+          "meme_id": "salim_kumar"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Ninte reel scroll continue aanu, alle?",
+          "avatar_expression": "furious",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "timer_first_warn_07",
+      "trigger": "timer_expired",
+      "app_hint": null,
+      "search_query": "faaah meme sound",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bruh.mp3",
+          "caption": "15 second kazhinjittum onnum paranjilla?",
+          "avatar_expression": "tapping_foot",
+          "meme_id": "bruh"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/metal_pipe.mp3",
+          "caption": "Time out! Enik oru vaakku venam.",
+          "avatar_expression": "furious",
+          "meme_id": "metal_pipe"
+        }
+      ]
+    },
+    {
+      "id": "timer_repeat_08",
+      "trigger": "timer_expired",
+      "app_hint": null,
+      "search_query": "harisree ashokan waiting dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bruh.mp3",
+          "caption": "Ninte sneham evide poyi?",
+          "avatar_expression": "bored",
+          "meme_id": "bruh"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/metal_pipe.mp3",
+          "caption": "Clock nadakkunnundu, ninak parayan onnumilla?",
+          "avatar_expression": "disappointed",
+          "meme_id": "metal_pipe"
+        }
+      ]
+    },
+    {
+      "id": "timer_long_idle_09",
+      "trigger": "timer_expired",
+      "app_hint": null,
+      "search_query": "salim kumar dramatic dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bruh.mp3",
+          "caption": "Ithu vare kaathirunnu, ini kaathirikkilla.",
+          "avatar_expression": "sleepy_check",
+          "meme_id": "bruh"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/metal_pipe.mp3",
+          "caption": "Nimisham kazhinjaal review illa!",
+          "avatar_expression": "furious",
+          "meme_id": "metal_pipe"
+        }
+      ]
+    },
+    {
+      "id": "begging_short_10",
+      "trigger": "failed_begging",
+      "app_hint": null,
+      "search_query": "mamukoya comedy reaction",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "Sorry alla venda, compliment venam!",
+          "avatar_expression": "smirk",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Excuse kേട്ടിട്ട് sahikkunilla.",
+          "avatar_expression": "mocking",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "begging_repeat_word_11",
+      "trigger": "failed_begging",
+      "app_hint": null,
+      "search_query": "innocent repeated word meme",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "Njan chodichathu clue alla, praise aanu!",
+          "avatar_expression": "unimpressed",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Athu oru begging alle, try again.",
+          "avatar_expression": "furious",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "begging_generic_12",
+      "trigger": "failed_begging",
+      "app_hint": null,
+      "search_query": "kalabhavan mani punchline",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "'Please' onnum matram pore, effort venam.",
+          "avatar_expression": "smug",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Ninte sorry ente ego niraykkilla.",
+          "avatar_expression": "disappointed",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "spam_paste_13",
+      "trigger": "spam_typing",
+      "app_hint": null,
+      "search_query": "fast talking comedy dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bonk.mp3",
+          "caption": "Ithra ezhuthenda, oru vaakku mathi!",
+          "avatar_expression": "suspicious",
+          "meme_id": "bonk"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/aughhh.mp3",
+          "caption": "Essay alla, compliment venam.",
+          "avatar_expression": "furious",
+          "meme_id": "aughhh"
+        }
+      ]
+    },
+    {
+      "id": "spam_repeat_char_14",
+      "trigger": "spam_typing",
+      "app_hint": null,
+      "search_query": "aaaah scream meme",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bonk.mp3",
+          "caption": "Ninak enne confuse cheyyan nokkuvo?",
+          "avatar_expression": "confused",
+          "meme_id": "bonk"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/aughhh.mp3",
+          "caption": "Short and sincere, athu mathi.",
+          "avatar_expression": "mocking",
+          "meme_id": "aughhh"
+        }
+      ]
+    },
+    {
+      "id": "spam_burst_typing_15",
+      "trigger": "spam_typing",
+      "app_hint": null,
+      "search_query": "hyper typing comedy scene",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bonk.mp3",
+          "caption": "Ithu novel alla, chat aanu!",
+          "avatar_expression": "eye_roll",
+          "meme_id": "bonk"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/aughhh.mp3",
+          "caption": "Kurachu chുരുക്കി parayu.",
+          "avatar_expression": "furious",
+          "meme_id": "aughhh"
+        }
+      ]
+    },
+    {
+      "id": "persuasion_fail_weak_16",
+      "trigger": "persuasion_fail",
+      "app_hint": null,
+      "search_query": "judge rejection dialogue comedy",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "Judge paranjathu [FAIL] aanu, sorry alle!",
+          "avatar_expression": "shaking_head",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Ninte argument weak aayirunnu.",
+          "avatar_expression": "furious",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "persuasion_fail_lazy_17",
+      "trigger": "persuasion_fail",
+      "app_hint": null,
+      "search_query": "lazy excuse comedy dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "Better luck next lottery round!",
+          "avatar_expression": "unimpressed",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Ithu convincing aayilla, try harder.",
+          "avatar_expression": "mocking",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "persuasion_fail_repeat_18",
+      "trigger": "persuasion_fail",
+      "app_hint": null,
+      "search_query": "not convinced dialogue meme",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "Judge polum ninne vishwasikkunilla!",
+          "avatar_expression": "disappointed",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Case dismiss aayi, freeze time!",
+          "avatar_expression": "furious",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "persuasion_pass_creative_19",
+      "trigger": "persuasion_pass",
+      "app_hint": null,
+      "search_query": "impressed approval dialogue comedy",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/applause.mp3",
+          "caption": "Sheri sheri, ninak jayichu ee round!",
+          "avatar_expression": "impressed",
+          "meme_id": "applause"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/giga_chad.mp3",
+          "caption": "Fine, njan vittu tharam, ini pokolo.",
+          "avatar_expression": "grudging_respect",
+          "meme_id": "giga_chad"
+        }
+      ]
+    },
+    {
+      "id": "persuasion_pass_funny_20",
+      "trigger": "persuasion_pass",
+      "app_hint": null,
+      "search_query": "laughing approval dialogue comedy",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/applause.mp3",
+          "caption": "Athu nalla argument aayirunnu, respect!",
+          "avatar_expression": "laughing",
+          "meme_id": "applause"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/giga_chad.mp3",
+          "caption": "Case dismissed, pinneyum nokkam.",
+          "avatar_expression": "impressed",
+          "meme_id": "giga_chad"
+        }
+      ]
+    },
+    {
+      "id": "generic_roast_21",
+      "trigger": "unauthorized_app",
+      "app_hint": "any",
+      "search_query": "sreenivasan sarcastic dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/salim_kumar.mp3",
+          "caption": "Game open aayi, ente ego close aayi.",
+          "avatar_expression": "smug",
+          "meme_id": "salim_kumar"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Ithu ente time alle, entha ee cheating?",
+          "avatar_expression": "furious",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "generic_roast_22",
+      "trigger": "unauthorized_app",
+      "app_hint": "any",
+      "search_query": "jayaram comedy taunt",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/salim_kumar.mp3",
+          "caption": "Chat window nokkiyalle irikkunne, code evide?",
+          "avatar_expression": "smirk",
+          "meme_id": "salim_kumar"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/fbi_open_up.mp3",
+          "caption": "Scroll scroll scroll, work evide?",
+          "avatar_expression": "mocking",
+          "meme_id": "fbi_open_up"
+        }
+      ]
+    },
+    {
+      "id": "generic_roast_23",
+      "trigger": "timer_expired",
+      "app_hint": null,
+      "search_query": "dileep comedy waiting scene",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bruh.mp3",
+          "caption": "Enik oru compliment polum tharathe?",
+          "avatar_expression": "tapping_foot",
+          "meme_id": "bruh"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/metal_pipe.mp3",
+          "caption": "Serious aayittanu chodikkunne, parayu!",
+          "avatar_expression": "furious",
+          "meme_id": "metal_pipe"
+        }
+      ]
+    },
+    {
+      "id": "generic_roast_24",
+      "trigger": "failed_begging",
+      "app_hint": null,
+      "search_query": "kottayam nazeer intense dialogue",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/directed_by_robert_b_weide.mp3",
+          "caption": "Kurachu koodi sincere aayi parayu.",
+          "avatar_expression": "unimpressed",
+          "meme_id": "directed_by_robert_b_weide"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/emotional_damage.mp3",
+          "caption": "Athu copy-paste sorry alle ithu?",
+          "avatar_expression": "furious",
+          "meme_id": "emotional_damage"
+        }
+      ]
+    },
+    {
+      "id": "generic_roast_25",
+      "trigger": "spam_typing",
+      "app_hint": null,
+      "search_query": "chuff faah meme variant",
+      "options": [
+        {
+          "intensity": "mild",
+          "audio_file": "assets/audio/bonk.mp3",
+          "caption": "Wall of text kണ്ടിട്ട് enik headache aayi.",
+          "avatar_expression": "suspicious",
+          "meme_id": "bonk"
+        },
+        {
+          "intensity": "savage",
+          "audio_file": "assets/audio/aughhh.mp3",
+          "caption": "Auto-fail, ithu cheating aayirunnu.",
+          "avatar_expression": "mocking",
+          "meme_id": "aughhh"
+        }
+      ]
+    }
+  ]
+}

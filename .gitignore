@@ -1,0 +1,23 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary generated caches
+scratch/
+assets/audio/tts_cache/
+assets/avatar/luna/cache_290x315/
+*.log
+*.pid
+.egobot.pid
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

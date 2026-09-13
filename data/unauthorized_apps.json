@@ -1,0 +1,31 @@
+{
+  "unauthorized_processes": [
+    "chrome.exe",
+    "msedge.exe",
+    "brave.exe",
+    "firefox.exe",
+    "steam.exe",
+    "steamwebhelper.exe",
+    "epicgameslauncher.exe",
+    "discord.exe",
+    "spotify.exe",
+    "vlc.exe",
+    "valorant.exe"
+  ],
+  "unauthorized_window_keywords": [
+    "youtube",
+    "netflix",
+    "instagram",
+    "reddit",
+    "twitch",
+    "tiktok",
+    "twitter",
+    "x.com",
+    "steam",
+    "valorant",
+    "game"
+  ],
+  "poll_interval_seconds": 2.5,
+  "cooldown_seconds": 20.0,
+  "check_background_processes": false
+}
