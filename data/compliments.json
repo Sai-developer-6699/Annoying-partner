@@ -7,7 +7,10 @@
   "max_history": 15,
   "similarity_threshold": 0.82,
   "history": [
-    "Your code is remarkably clean and brilliant!"
+    "Your code is remarkably clean and brilliant!",
+    "you are greatest genius ever",
+    "yes you are the best",
+    "you are the first every geninus"
   ],
   "fallback_starters": [
     "You debug like it's a personal vendetta against bugs.",
