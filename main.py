@@ -67,7 +67,7 @@ class AnnoyingCompanionApp:
         self.root.withdraw()
 
         # Build Pet UI
-        countdown = 20.0 if self.debug else 35.0
+        countdown = 5.0 if self.debug else 15.0
         logger.info(f"Initializing PetWindow (debug={self.debug}, countdown={countdown}s)...")
         self.pet = PetWindow(
             root=self.root,

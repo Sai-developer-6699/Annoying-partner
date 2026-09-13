@@ -82,7 +82,7 @@ class ComplimentBar(tk.Frame):
         on_accepted: Callable[[str], None],
         on_rejected: Callable[[str, str], None],
         on_expired: Callable[[], None],
-        countdown_seconds: float = 30.0,
+        countdown_seconds: float = 15.0,
         debug: bool = False,
         **kwargs,
     ):
