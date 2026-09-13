@@ -128,7 +128,7 @@ class PetWindow(tk.Toplevel):
                 b_img = Image.open(bubble_file)
                 if b_img.mode != "RGBA":
                     b_img = b_img.convert("RGBA")
-                target_w = 390
+                target_w = 370
                 target_h = int(target_w * (b_img.height / b_img.width))
                 b_resized = b_img.resize((target_w, target_h), Image.Resampling.LANCZOS)
                 self.bubble_photo = ImageTk.PhotoImage(b_resized)
@@ -237,8 +237,9 @@ class PetWindow(tk.Toplevel):
         self.action_subline.pack(fill=tk.X, pady=(2, 2))
 
         # 4. Spacious Clean Comic Speech Bubble Canvas (Tail points down directly to Luna)
-        bw, bh = getattr(self, "bubble_dims", (390, 184))
-        canvas_h = max(175, bh)
+        # 4. Spacious Clean Comic Speech Bubble Canvas (Tail points down directly to Luna)
+        bw, bh = getattr(self, "bubble_dims", (370, 174))
+        canvas_h = max(168, bh)
         self.bubble_canvas = tk.Canvas(
             self,
             width=420,
@@ -256,14 +257,14 @@ class PetWindow(tk.Toplevel):
                 210, canvas_h // 2, image=self.bubble_photo, anchor=tk.CENTER
             )
 
-        text_cy = (canvas_h - 20) // 2
+        text_cy = (canvas_h - 18) // 2
         self.bubble_text_id = self.bubble_canvas.create_text(
             210,
             text_cy,
             text="Praise my digital genius, human.\nYou have time.",
             font=("Segoe UI", 9, "bold"),
             fill="#11111b",
-            width=330,
+            width=320,
             justify=tk.CENTER,
         )
 
@@ -274,7 +275,7 @@ class PetWindow(tk.Toplevel):
         self.canvas = tk.Canvas(
             self.canvas_frame,
             width=420,
-            height=230,
+            height=205,
             bg="#11111b",
             highlightthickness=0,
             bd=0,
@@ -292,7 +293,7 @@ class PetWindow(tk.Toplevel):
             countdown_seconds=self.countdown_seconds,
             debug=self.debug,
         )
-        self.compliment_bar.pack(fill=tk.X, padx=4, pady=(2, 6))
+        self.compliment_bar.pack(fill=tk.X, padx=4, pady=(2, 4))
 
         # Focus entry immediately so user can praise Luna right away
         try:
@@ -301,6 +302,18 @@ class PetWindow(tk.Toplevel):
             pass
 
         self.draw_avatar()
+
+        # Dynamically size window to guarantee 100% visibility of all widgets with 0 clipping
+        self.update_idletasks()
+        req_w = max(420, self.winfo_reqwidth())
+        req_h = self.winfo_reqheight()
+        screen_w = self.winfo_screenwidth()
+        screen_h = self.winfo_screenheight()
+        win_w = req_w
+        win_h = req_h + 12
+        x = max(20, screen_w - win_w - 30)
+        y = max(20, screen_h - win_h - 50)
+        self.geometry(f"{win_w}x{win_h}+{x}+{y}")
 
     def _trigger_kill_switch(self) -> None:
         if self.on_emergency_kill:
@@ -393,7 +406,7 @@ class PetWindow(tk.Toplevel):
     def draw_avatar(self) -> None:
         self.canvas.delete("all")
         cx = 210
-        cy = 115 + self._nod_offset_y
+        cy = 103 + self._nod_offset_y
 
         if self.sprites:
             expr = self.expression.lower()

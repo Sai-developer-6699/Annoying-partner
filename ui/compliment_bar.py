@@ -136,7 +136,7 @@ class ComplimentBar(tk.Frame):
     def _build_ui(self) -> None:
         # Header row: Title + Timer
         self.header_frame = tk.Frame(self, bg="#11111b")
-        self.header_frame.pack(fill=tk.X, padx=10, pady=(6, 2))
+        self.header_frame.pack(fill=tk.X, padx=10, pady=(4, 2))
 
         self.demand_label = tk.Label(
             self.header_frame,
@@ -157,19 +157,19 @@ class ComplimentBar(tk.Frame):
         self.timer_label.pack(side=tk.RIGHT)
 
         # Progress bar canvas
-        self.progress_canvas = tk.Canvas(self, height=7, bg="#313244", highlightthickness=0)
-        self.progress_canvas.pack(fill=tk.X, padx=10, pady=(0, 6))
+        self.progress_canvas = tk.Canvas(self, height=6, bg="#313244", highlightthickness=0)
+        self.progress_canvas.pack(fill=tk.X, padx=10, pady=(0, 4))
         self._update_progress_bar()
 
         # Input row (Enlarged and spacious for comfortable typing)
         self.input_frame = tk.Frame(self, bg="#11111b")
-        self.input_frame.pack(fill=tk.X, padx=10, pady=(0, 6))
+        self.input_frame.pack(fill=tk.X, padx=10, pady=(0, 4))
 
         self.entry_var = tk.StringVar()
         self.entry = tk.Entry(
             self.input_frame,
             textvariable=self.entry_var,
-            font=("Segoe UI", 11),
+            font=("Segoe UI", 10),
             bg="#313244",
             fg="#cdd6f4",
             insertbackground="#f5e0dc",
@@ -178,7 +178,7 @@ class ComplimentBar(tk.Frame):
             highlightcolor="#cba6f7",
             highlightbackground="#45475a",
         )
-        self.entry.pack(side=tk.LEFT, fill=tk.X, expand=True, ipady=8, padx=(0, 6))
+        self.entry.pack(side=tk.LEFT, fill=tk.X, expand=True, ipady=6, padx=(0, 6))
 
         # Wire keystroke tracking and paste detection
         self.entry.bind("<KeyRelease>", self._on_key_release)
@@ -188,14 +188,14 @@ class ComplimentBar(tk.Frame):
         self.submit_btn = tk.Button(
             self.input_frame,
             text="❤",
-            font=("Segoe UI", 12, "bold"),
+            font=("Segoe UI", 11, "bold"),
             bg="#f38ba8",
             fg="#11111b",
             activebackground="#eba0ac",
             relief=tk.FLAT,
             cursor="hand2",
-            padx=12,
-            pady=4,
+            padx=10,
+            pady=3,
             command=self.submit_compliment,
         )
         self.submit_btn.pack(side=tk.RIGHT)
@@ -203,21 +203,21 @@ class ComplimentBar(tk.Frame):
         self.mic_btn = tk.Button(
             self.input_frame,
             text="🎙️",
-            font=("Segoe UI", 11),
+            font=("Segoe UI", 10),
             bg="#89b4fa",
             fg="#11111b",
             activebackground="#b4befe",
             relief=tk.FLAT,
             cursor="hand2",
-            padx=10,
-            pady=4,
+            padx=8,
+            pady=3,
             command=self._start_voice_input,
         )
         self.mic_btn.pack(side=tk.RIGHT, padx=(0, 6))
 
         # Bottom hint / action row
         self.bottom_frame = tk.Frame(self, bg="#11111b")
-        self.bottom_frame.pack(fill=tk.X, padx=10, pady=(0, 6))
+        self.bottom_frame.pack(fill=tk.X, padx=10, pady=(0, 4))
 
         self.hint_btn = tk.Button(
             self.bottom_frame,

@@ -1,1 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ego-Bot 3000 • The Annoying Desktop AI Companion</title>
+  <meta name="description" content="A desktop companion that demands flattery every 15 seconds, penalizes slacking with inverted mouse chaos, and drags you to court before an AI Judge. Built for TinkerHub Useless Projects 3.0.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0e15;
+      --surface: #181825;
+      --surface2: #1e1e2e;
+      --overlay: #313244;
+      --text: #cdd6f4;
+      --subtext: #a6adc8;
+      --accent: #cba6f7;
+      --danger: #f38ba8;
+      --warning: #fab387;
+      --success: #a6e3a1;
+      --cyan: #89dceb;
+      --blue: #89b4fa;
+      --card-border: rgba(203, 166, 247, 0.18);
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #1c1533 0%, var(--bg) 70%);
+      color: var(--text);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(203, 166, 247, 0.12);
+      color: var(--accent);
+      border: 1px solid var(--card-border);
+    }
+
+    .badge.tinker {
+      background: rgba(166, 227, 161, 0.12);
+      color: var(--success);
+      border-color: rgba(166, 227, 161, 0.25);
+    }
+
+    .badge.danger {
+      background: rgba(243, 139, 168, 0.15);
+      color: var(--danger);
+      border-color: rgba(243, 139, 168, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 70%, #f38ba8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: var(--subtext);
+      max-width: 680px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #b4befe);
+      color: #11111b;
+      box-shadow: 0 4px 20px rgba(203, 166, 247, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(203, 166, 247, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface2);
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: rgba(24, 24, 37, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--subtext);
+      font-size: 0.92rem;
+    }
+
+    /* Live Praise Simulator Widget */
+    .sim-box {
+      background: #11111b;
+      border: 1px solid rgba(203, 166, 247, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .sim-timer {
+      color: var(--success);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+    }
+
+    .sim-progress-bg {
+      height: 6px;
+      background: #313244;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .sim-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--danger));
+      width: 80%;
+      transition: width 0.1s linear;
+    }
+
+    .sim-input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .sim-input {
+      flex: 1;
+      background: #313244;
+      border: 1px solid #45475a;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .sim-input:focus {
+      border-color: var(--accent);
+    }
+
+    .sim-btn {
+      background: var(--danger);
+      color: #11111b;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      padding: 0 1rem;
+      cursor: pointer;
+    }
+
+    .sim-feedback {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--accent);
+      min-height: 1.3rem;
+    }
+
+    /* Audio Soundboard */
+    .sound-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .sound-btn {
+      background: #25263a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.65rem 0.5rem;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.15s ease;
+    }
+
+    .sound-btn:hover {
+      background: var(--accent);
+      color: #11111b;
+      transform: scale(1.03);
+    }
+
+    .sound-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Terminal Quickstart */
+    .code-block {
+      background: #11111b;
+      border: 1px solid #313244;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      color: #a6e3a1;
+      overflow-x: auto;
+      margin-top: 0.75rem;
+      position: relative;
+    }
+
+    .code-comment {
+      color: #6c7086;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--subtext);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-bar">
+      <span class="badge tinker">🏆 TinkerHub Useless Projects 3.0</span>
+      <span class="badge danger">⚠️ Extreme Desktop Menace</span>
+      <span class="badge">🧠 Powered by Phi-3 Ollama</span>
+    </div>
+    <h1>EGO-BOT 3000</h1>
+    <p class="hero-sub">The unclosable, emotionally needy AI desktop tyrant that demands constant worship every 15 seconds, sabotages your mouse if you ignore her, and summons an AI courtroom tribunal if you slack off.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/Sai-developer-6699/Annoying-partner" class="btn btn-primary" target="_blank">
+        <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        View GitHub Repository
+      </a>
+      <a href="#quickstart" class="btn btn-secondary">⚡ Quick Install Guide</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Interactive Features Row -->
+    <div class="grid-2">
+      <!-- Feature 1: The Compliment Dilemma Simulator -->
+      <div class="card">
+        <div class="card-icon">👑</div>
+        <h3>15-Second Flattery Demand Loop</h3>
+        <p>Luna floats on your desktop. If you don't flatter her with creative compliments before the timer reaches 0, you face punishment. But beware: Troll Autocorrect randomly mutates flattering words into insults!</p>
+        
+        <div class="sim-box">
+          <div class="sim-header">
+            <span>👑 DEMANDING PRAISE:</span>
+            <span class="sim-timer" id="simTimer">14.8s</span>
+          </div>
+          <div class="sim-progress-bg">
+            <div class="sim-progress-fill" id="simProgress"></div>
+          </div>
+          <div class="sim-input-row">
+            <input type="text" id="simInput" class="sim-input" placeholder="Type: You are a brilliant genius..." value="You are a brilliant master coder">
+            <button class="sim-btn" id="simSubmit">❤ Praise</button>
+          </div>
+          <div class="sim-feedback" id="simFeedback">💡 Tip: Try typing "genius", "brilliant", or "god" to trigger troll mutation!</div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Interactive Scraped Meme Arsenal -->
+      <div class="card">
+        <div class="card-icon">🔊</div>
+        <h3>Scraped Meme Audio Arsenal</h3>
+        <p>Ego-Bot features 22 authentic meme audio cues scraped from Myinstants and iconic Malayalam cinema comedy clips, dynamically triggered by Ollama Phi-3 based on your slacking context.</p>
+        
+        <div class="sound-grid">
+          <button class="sound-btn" onclick="playSound('assets/audio/faah.mp3')">⚡ Fahadh FAAAH!</button>
+          <button class="sound-btn" onclick="playSound('assets/audio/emotional_damage.mp3')">💥 Emotional Damage</button>
+          <button class="sound-btn" onclick="playSound('assets/audio/fbi_open_up.mp3')">🚨 FBI Open Up!</button>
+          <button class="sound-btn" onclick="playSound('assets/audio/suraj_dhamu.mp3')">🎭 Dashamoolam Damu</button>
+          <button class="sound-btn" onclick="playSound('assets/audio/sad_violin.mp3')">🎻 Sad Violin (Fail)</button>
+          <button class="sound-btn" onclick="playSound('assets/audio/giga_chad.mp3')">🗿 Giga Chad Praise</button>
+        </div>
+        <p style="margin-top: 0.8rem; font-size: 0.78rem; color: #6c7086;">Click any clip to audition Ego-Bot's audio reactions.</p>
+      </div>
+    </div>
+
+    <!-- System Highlights Grid -->
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <h3>AI Persuasion Tribunal (70%)</h3>
+        <p>Caught slacking on YouTube, Brave, or Steam? The desktop locks into a fullscreen dark courtroom where a local Phi-3 AI Judge cross-examines your excuse. Only plausible reasons are granted clemency!</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h3>Compulsory Inverted Mouse (30%)</h3>
+        <p>For unrepentant slackers or expired countdowns, Windows mouse physics are hijacked. Moving your mouse left makes the cursor run right; moving up pulls it down into the bottom-right corner for 15 seconds.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <h3>Microphone Speech Recognition</h3>
+        <p>Don't want to type? Click the 🎙️ button to speak your flattery or plead your courtroom excuse live through your microphone via automated speech-to-text processing.</p>
+      </div>
+    </div>
+
+    <!-- Quickstart Section -->
+    <div class="card" id="quickstart">
+      <div class="card-icon">🚀</div>
+      <h3>Quickstart & Installation</h3>
+      <p>Run Ego-Bot 3000 locally in under 60 seconds on Windows 10/11:</p>
+      
+      <div class="code-block">
+<span class="code-comment"># 1. Clone the repository</span>
+git clone https://github.com/Sai-developer-6699/Annoying-partner.git
+cd Annoying-partner
+
+<span class="code-comment"># 2. Set up virtual environment and install requirements</span>
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+
+<span class="code-comment"># 3. Launch Ego-Bot 3000 (with local Ollama Phi-3)</span>
+python main.py --model phi3:mini
+      </div>
+
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--subtext);">
+        🆘 <strong>Emergency Safety Exit:</strong> Press <code style="color: var(--danger); background: #313244; padding: 2px 6px; border-radius: 4px;">F12</code> or <code style="color: var(--danger); background: #313244; padding: 2px 6px; border-radius: 4px;">Ctrl + Q</code> at any point during cursor chaos or tribunal to immediately terminate the process safely.
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Created for <strong>TinkerHub Useless Projects 3.0</strong> • Built with Python, Tkinter, Pygame, and Ollama Phi-3.</p>
+    <p style="margin-top: 0.4rem;"><a href="https://github.com/Sai-developer-6699/Annoying-partner">GitHub Repository</a> • <a href="README.md">Project Submission Specs</a></p>
+  </footer>
+
+  <script>
+    // Live Audio Playback Handler
+    let currentAudio = null;
+    function playSound(src) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      currentAudio = new Audio(src);
+      currentAudio.play().catch(e => {
+        console.warn("Audio autoplay blocked or file missing:", e);
+      });
+    }
+
+    // Troll Simulator
+    const trollMap = {
+      "genius": "potato",
+      "smart": "calculator",
+      "brilliant": "mediocre",
+      "master": "rookie",
+      "god": "clown",
+      "clean": "spaghetti",
+      "code": "syntax error",
+      "programming": "copy-pasting"
+    };
+
+    const input = document.getElementById("simInput");
+    const submit = document.getElementById("simSubmit");
+    const feedback = document.getElementById("simFeedback");
+    const timer = document.getElementById("simTimer");
+    const progress = document.getElementById("simProgress");
+
+    let timeLeft = 14.8;
+    setInterval(() => {
+      timeLeft -= 0.1;
+      if (timeLeft <= 0) {
+        timeLeft = 15.0;
+        feedback.textContent = "⚡ TIME EXPIRED! Persuasion Tribunal summoned!";
+        feedback.style.color = "var(--danger)";
+      }
+      timer.textContent = timeLeft.toFixed(1) + "s";
+      progress.style.width = ((timeLeft / 15.0) * 100) + "%";
+    }, 100);
+
+    input.addEventListener("input", (e) => {
+      let val = input.value;
+      let words = val.split(" ");
+      let changed = false;
+      let mutated = words.map(w => {
+        let clean = w.toLowerCase().replace(/[^a-z]/g, "");
+        if (trollMap[clean] && Math.random() < 0.45) {
+          changed = true;
+          return trollMap[clean];
+        }
+        return w;
+      });
+
+      if (changed) {
+        input.value = mutated.join(" ");
+        feedback.textContent = "😈 Troll Autocorrect hijacked your compliment!";
+        feedback.style.color = "var(--warning)";
+      }
+    });
+
+    submit.addEventListener("click", () => {
+      timeLeft = 15.0;
+      feedback.textContent = "💖 Luna blushes! Ego meter: 92% (+7s granted)";
+      feedback.style.color = "var(--success)";
+      playSound("assets/audio/giga_chad.mp3");
+    });
+  </script>
+</body>
+</html>
